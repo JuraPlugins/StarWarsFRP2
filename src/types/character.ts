@@ -42,7 +42,7 @@ export interface SpecialFeature {
 export interface Item {
   id: string;
   name: string;
-  category: 'Blaster' | 'Vibro' | 'Zırh' | 'Kalkan' | 'Patlayıcı' | 'Medikal' | 'Tech' | 'Alet' | 'Sibernetik';
+  category: 'Blaster' | 'Vibro' | 'Zırh' | 'Kalkan' | 'Patlayıcı' | 'Medikal' | 'Tech' | 'Alet' | 'Sibernetik' | 'Mod' | 'Force';
   cost: number; // credits
   weight: number; // lbs
   rarity: 'Standart' | 'Premium' | 'Prototip' | 'Askeri' | 'Özel';
@@ -50,6 +50,18 @@ export interface Item {
   stats?: string;
   equipped?: boolean;
   quantity?: number;
+}
+
+export interface ForcePower {
+  id: string;
+  name: string;
+  level: number; // 0 for at-will
+  alignment: 'Light' | 'Dark' | 'Universal';
+  forceCost: number; // Force points
+  castingTime: string;
+  range: string;
+  duration: string;
+  description: string;
 }
 
 export interface TechPower {
@@ -137,6 +149,21 @@ export interface Character {
   actionSurgeAvailable?: boolean;
   targetAssessed?: string; // Silas hunter's quarry
   companionDroid?: CompanionDroid; // Elias
+
+  // Conditions (Kör, Zehirli, Felçli vb.)
+  conditions?: string[];
+
+  // Forcecasting (if force sensitive)
+  forcecasting?: {
+    currentFp: number;
+    maxFp: number;
+    saveDc: number;
+    attackBonus: number;
+    powers: ForcePower[];
+  };
+
+  // Operational Mission Notes
+  missionNotes?: string;
 
   // Equipment & Attacks
   attacks: AttackAction[];

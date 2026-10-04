@@ -29,7 +29,7 @@ export const ArmoryMarket: React.FC<ArmoryMarketProps> = ({
 
   const activeChar = characters.find((c) => c.id === selectedCharId) || characters[0];
 
-  const categories = ['Hepsi', 'Blaster', 'Vibro', 'Zırh', 'Kalkan', 'Patlayıcı', 'Medikal', 'Tech', 'Alet', 'Sibernetik'];
+  const categories = ['Hepsi', 'Blaster', 'Vibro', 'Zırh', 'Kalkan', 'Patlayıcı', 'Medikal', 'Tech', 'Alet', 'Sibernetik', 'Mod', 'Force'];
 
   const filteredItems = SW5E_ITEMS.filter((item) => {
     const matchesCat = activeCategory === 'Hepsi' || item.category === activeCategory;

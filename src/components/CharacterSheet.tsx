@@ -20,6 +20,7 @@ import {
   FileText
 } from 'lucide-react';
 import { Character, AbilityName, Skill, AttackAction } from '../types/character';
+import { SW5E_CONDITIONS } from '../data/sw5eCompendium';
 import { sounds } from '../utils/soundEffects';
 import { rollD20, rollFormula, DiceRollResult } from '../utils/dice';
 
@@ -40,8 +41,23 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
   onOpenDiceModal,
   onOpenArmory,
 }) => {
-  const [activeTab, setActiveTab] = useState<'attacks' | 'skills' | 'features' | 'inventory'>('attacks');
+  const [activeTab, setActiveTab] = useState<'attacks' | 'skills' | 'features' | 'inventory' | 'notes'>('attacks');
   const [targetNameInput, setTargetNameInput] = useState(character.targetAssessed || '');
+  const [selectedConditionToAdd, setSelectedConditionToAdd] = useState<string>('');
+
+  const activeConditions = character.conditions || [];
+
+  const handleToggleCondition = (condId: string) => {
+    sounds.playClick();
+    const current = character.conditions || [];
+    const updated = current.includes(condId)
+      ? current.filter((c) => c !== condId)
+      : [...current, condId];
+    onUpdateCharacter({
+      ...character,
+      conditions: updated,
+    });
+  };
 
   // Quick HP Change
   const modifyHp = (amount: number) => {
@@ -376,6 +392,63 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
               Harca (+HP)
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* SW5E Active Conditions Bar */}
+      <div className="conditions-bar">
+        <div className="conditions-label-wrap">
+          <AlertCircle size={16} className="text-amber" />
+          <span className="conditions-title">AKTİF SAVAŞ DURUMLARI (CONDITIONS):</span>
+        </div>
+
+        <div className="conditions-tags-row">
+          {activeConditions.length === 0 ? (
+            <span className="no-conditions-tag">Temiz (Aktif Durum Etkisi Yok)</span>
+          ) : (
+            activeConditions.map((condId) => {
+              const condInfo = SW5E_CONDITIONS.find((c) => c.id === condId);
+              return (
+                <div
+                  key={condId}
+                  className="condition-active-badge"
+                  style={{ borderColor: condInfo?.color || '#ff2a4b' }}
+                  title={condInfo?.description}
+                >
+                  <span className="cond-dot" style={{ backgroundColor: condInfo?.color || '#ff2a4b' }}></span>
+                  <strong>{condInfo?.nameTr || condId}</strong>
+                  <button
+                    className="btn-remove-cond"
+                    onClick={() => handleToggleCondition(condId)}
+                    title="Durumu Kaldır"
+                  >
+                    &times;
+                  </button>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        <div className="add-condition-dropdown-wrap">
+          <select
+            value={selectedConditionToAdd}
+            onChange={(e) => {
+              const val = e.target.value;
+              if (val) {
+                handleToggleCondition(val);
+                setSelectedConditionToAdd('');
+              }
+            }}
+            className="dark-select condition-select"
+          >
+            <option value="">+ Durum Ekle / Kaldır...</option>
+            {SW5E_CONDITIONS.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nameTr} {activeConditions.includes(c.id) ? '✓ (Aktif)' : ''}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -732,6 +805,12 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
             >
               <Shield size={16} /> Ekipman & Envanter ({character.inventory.length})
             </button>
+            <button
+              className={`sub-tab-btn ${activeTab === 'notes' ? 'active' : ''}`}
+              onClick={() => setActiveTab('notes')}
+            >
+              <FileText size={16} /> Görev Notları & İstihbarat
+            </button>
           </div>
 
           {/* TAB 1: ATTACKS & COMBAT */}
@@ -892,6 +971,47 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
                     <p className="gear-desc">{item.description}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 5: MISSION NOTES & INTEL */}
+          {activeTab === 'notes' && (
+            <div className="tab-pane notes-pane">
+              <div className="notes-header">
+                <div className="notes-title-group">
+                  <FileText className="text-cyan" size={20} />
+                  <h4 className="tech-section-title">İMPARATORLUK SAHA İSTİHBARAT VE GÖREV KAYITLARI</h4>
+                </div>
+                <span className="terminal-code">ŞİFRELİ DATAPAD NOT DEFTERİ</span>
+              </div>
+              <textarea
+                className="mission-notes-textarea"
+                rows={12}
+                placeholder="Operasyon hedefleri, şifreli frekanslar, ödül avı koordinatları, ele geçirilen düşman belgeleri..."
+                value={character.missionNotes || ''}
+                onChange={(e) => {
+                  onUpdateCharacter({
+                    ...character,
+                    missionNotes: e.target.value,
+                  });
+                }}
+              />
+              <div className="notes-footer-bar">
+                <span className="text-muted">Notlar otomatik olarak tarayıcı yerel hafızasına kaydedilir.</span>
+                <button
+                  type="button"
+                  className="quick-note-template-btn"
+                  onClick={() => {
+                    const template = `\n--- [YENİ İSTİHBARAT: ${new Date().toLocaleTimeString('tr-TR')}] ---\n• Hedef:\n• Konum:\n• Güvenlik Kodu:\n• Tehdit Seviyesi:\n`;
+                    onUpdateCharacter({
+                      ...character,
+                      missionNotes: (character.missionNotes || '') + template,
+                    });
+                  }}
+                >
+                  + Taktik Şablon Ekle
+                </button>
               </div>
             </div>
           )}

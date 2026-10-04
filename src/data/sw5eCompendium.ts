@@ -1,4 +1,4 @@
-import { Item, TechPower, Maneuver } from '../types/character';
+import { Item, TechPower, Maneuver, ForcePower } from '../types/character';
 
 export interface Feat {
   id: string;
@@ -741,6 +741,134 @@ export const SW5E_ITEMS: Item[] = [
     stats: 'Can 0 a düştüğünde anında 10 HP canlandırır (Günde 1 kez)',
     description: 'Operatif ölümcül darbe aldığında kalp atışını hissederek doğrudan kolto enjekte eder.',
   },
+
+  // ==========================================
+  // --- 9. SİLAH & ZIRH MODLARI (MODS) ---
+  // ==========================================
+  {
+    id: 'mod-thermal-scope',
+    name: 'Termal Optik Nişangah Modülü',
+    category: 'Mod',
+    cost: 450,
+    weight: 0.5,
+    rarity: 'Premium',
+    stats: 'Menzilli saldırı zarlarına +1 İsabet, Siper dezavantajını azaltır',
+    description: 'Blaster ve sniper tüfeklerine takılan çok spektrumlu hedefleme dürbünü.',
+  },
+  {
+    id: 'mod-overcharged-cell',
+    name: 'Süper-Kapasitör Güç Hücresi',
+    category: 'Mod',
+    cost: 600,
+    weight: 0.5,
+    rarity: 'Askeri',
+    stats: 'Silahın her vuruşuna +2 Enerji hasarı ekler',
+    description: 'Plazma odasını aşırı yükleyerek cıvata yoğunluğunu katbekat artırır.',
+  },
+  {
+    id: 'mod-vibro-freq',
+    name: 'Yüksek Frekans Harmonik Modu',
+    category: 'Mod',
+    cost: 500,
+    weight: 0.2,
+    rarity: 'Premium',
+    stats: 'Vibro silahlarda 19-20 zarında Kritik Başarı vurur',
+    description: 'Mikro titreşim jeneratörünü kalibre ederek zırhları daha derinden yarar.',
+  },
+  {
+    id: 'mod-silencer-dampener',
+    name: 'Akustik Ses Sönümleyici Eklenti',
+    category: 'Mod',
+    cost: 350,
+    weight: 0.5,
+    rarity: 'Standart',
+    stats: 'Ateş edildiğinde ses ve flaşı yok eder (Stealth DC 10 bozulmaz)',
+    description: 'Namludan çıkan sonik dalgaları emen özel karbon tüp.',
+  },
+  {
+    id: 'mod-beskar-reinforcement',
+    name: 'Beskar Plaka Takviyesi (Zırh Modu)',
+    category: 'Mod',
+    cost: 1500,
+    weight: 4,
+    rarity: 'Prototip',
+    stats: 'Kullanılan zırhın AC değerine +1 ekler',
+    description: 'Göğüs ve hayati organ bölgelerine perçinlenen hafif beskar levha.',
+  },
+  {
+    id: 'mod-ion-converter',
+    name: 'İyon Dönüştürücü Çip',
+    category: 'Mod',
+    cost: 400,
+    weight: 0.2,
+    rarity: 'Standart',
+    stats: 'Silahın hasar türünü Enerji yerine İyona çevirebilme imkanı',
+    description: 'Droid ve elektronik kalkanlara karşı tek tıkla mod değiştirme anahtarı.',
+  },
+  {
+    id: 'mod-extended-mag',
+    name: 'Genişletilmiş Plazma Şarjörü',
+    category: 'Mod',
+    cost: 200,
+    weight: 1,
+    rarity: 'Standart',
+    stats: '2 kat mermi kapasitesi, şarjör değiştirme süresini azaltır',
+    description: 'Sıcak çatışmalarda mühimmat tazeleme ihtiyacını minimuma indirir.',
+  },
+  {
+    id: 'mod-tactical-bipod',
+    name: 'Taktik Destek Çatalı (Bipod)',
+    category: 'Mod',
+    cost: 150,
+    weight: 1.5,
+    rarity: 'Standart',
+    stats: 'Siperde veya yatarak ateş ederken menzilli saldırılara Avantaj sağlar',
+    description: 'Tüfeklerin altına katlanabilen hafif titanyum denge ayaklığı.',
+  },
+
+  // ==========================================
+  // --- 10. GÜÇ KALINTILARI & HOLOKRONLAR ---
+  // ==========================================
+  {
+    id: 'relic-sith-holocron',
+    name: 'Kadim Sith Piramit Holokronu',
+    category: 'Force',
+    cost: 6500,
+    weight: 2,
+    rarity: 'Prototip',
+    stats: 'Karanlık Taraf Bilgisi, Güç/Tech Kurtarma DC sine +1 Bonus',
+    description: 'Kırmızı parlayan kristal piramit; kadim Sith lordlarının yasak savaş taktiklerini fısıldar.',
+  },
+  {
+    id: 'relic-jedi-holocron',
+    name: 'Jedi Muhafız Kübik Holokronu',
+    category: 'Force',
+    cost: 6000,
+    weight: 2,
+    rarity: 'Prototip',
+    stats: 'WIS ve INT kontrollerine +1, Güç Kalkanı oluşturur',
+    description: 'Mavi parıldayan kadim küp; zihni sakinleştirir ve psişik direnç kazandırır.',
+  },
+  {
+    id: 'relic-kyber-crystal',
+    name: 'Saf Mavi Kyber Kristali Numunesi',
+    category: 'Force',
+    cost: 4500,
+    weight: 0.2,
+    rarity: 'Prototip',
+    stats: 'Silaha takıldığında fazladan +1d6 Parlak Işın hasarı ekler',
+    description: 'İlum mağaralarından çıkarılmış, saf enerjiye duyarlı yaşayan kristal.',
+  },
+  {
+    id: 'relic-ancient-hilt',
+    name: 'Kadim Işın Kılıcı Kabzası (Relic Hilt)',
+    category: 'Force',
+    cost: 3800,
+    weight: 1.5,
+    rarity: 'Prototip',
+    stats: 'Kuvvet kontrollerine +1, Işın kılıcı inşa etmek için temel parça',
+    description: 'Bin yıllık phrik alaşımından oyulmuş işlemeli antik kabza.',
+  },
 ];
 
 // ==========================================
@@ -1170,3 +1298,275 @@ export const SW5E_FEATS: Feat[] = [
     description: 'En ağır silahları ve cephaneleri tek elle kaldırıp fırlatabilen devasa fiziksel güç.',
   },
 ];
+
+// ==========================================
+// --- SW5E FORCE POWERS (GÜÇ YETENEKLERİ) ---
+// ==========================================
+export const SW5E_FORCE_POWERS: ForcePower[] = [
+  // --- AT-WILL (0 FP) ---
+  {
+    id: 'fp-force-push',
+    name: 'Güç İtişi (Force Push/Pull)',
+    level: 0,
+    alignment: 'Universal',
+    forceCost: 0,
+    castingTime: '1 Action',
+    range: '30 ft.',
+    duration: 'Anlık',
+    description: 'Hedefi telekinetik darbeyle 10 ft geriye iter veya kendine çeker (STR Save DC).',
+  },
+  {
+    id: 'fp-mind-trick',
+    name: 'Zihin Aldatmacası (Mind Trick)',
+    level: 0,
+    alignment: 'Universal',
+    forceCost: 0,
+    castingTime: '1 Action',
+    range: '30 ft.',
+    duration: 'Anlık',
+    description: 'Zayıf iradeli canlıların dikkatini başka yöne çeker, şüphe uyandırmadan kandırır.',
+  },
+  {
+    id: 'fp-saber-reflect',
+    name: 'Işın Saptırma (Saber Reflect)',
+    level: 0,
+    alignment: 'Universal',
+    forceCost: 0,
+    castingTime: '1 Reaksiyon',
+    range: 'Self',
+    duration: '1 tur',
+    description: 'Gelen bir blaster saldırısını ışın kılıcıyla saptırarak hasarı 1d10 + DEX kadar azaltır.',
+  },
+  {
+    id: 'fp-shock',
+    name: 'Güç Şoku (Force Shock)',
+    level: 0,
+    alignment: 'Dark',
+    forceCost: 0,
+    castingTime: '1 Action',
+    range: '30 ft.',
+    duration: 'Anlık',
+    description: 'Parmak uçlarından çıkan mor şimşek arkıyla 1d8 Yıldırım hasarı verir.',
+  },
+
+  // --- SEVİYE 1 ---
+  {
+    id: 'fp-force-heal',
+    name: 'Güç İyileştirmesi (Curato Salva / Heal)',
+    level: 1,
+    alignment: 'Light',
+    forceCost: 2,
+    castingTime: '1 Action',
+    range: 'Dokunma',
+    duration: 'Anlık',
+    description: 'Dokunduğu canlı varlığın hücrelerini Güç ile canlandırarak 1d8 + WIS/CHA kadar HP yeniler.',
+  },
+  {
+    id: 'fp-force-speed',
+    name: 'Güç Hızı (Burst of Speed)',
+    level: 1,
+    alignment: 'Universal',
+    forceCost: 2,
+    castingTime: '1 Bonus Action',
+    range: 'Self',
+    duration: '1 dakika',
+    description: 'Hareket hızını +20 ft artırır, fırsat saldırılarına karşı avantaj sağlar.',
+  },
+  {
+    id: 'fp-force-jump',
+    name: 'Güç Sıçraması (Force Leap)',
+    level: 1,
+    alignment: 'Universal',
+    forceCost: 2,
+    castingTime: '1 Bonus Action',
+    range: 'Self',
+    duration: 'Anlık',
+    description: 'Dikey veya yatay olarak 30 ft uzağa veya yukarıya yerçekimini bükerek sıçrar.',
+  },
+  {
+    id: 'fp-dark-tremor',
+    name: 'Karanlık Titreme (Dark Tremor)',
+    level: 1,
+    alignment: 'Dark',
+    forceCost: 2,
+    castingTime: '1 Action',
+    range: 'Self (15 ft yarıçap)',
+    duration: 'Anlık',
+    description: 'Zemini sarsarak 2d6 Kinetik hasar verir ve hedefleri yere devirir (DEX Save).',
+  },
+
+  // --- SEVİYE 2 ---
+  {
+    id: 'fp-force-choke',
+    name: 'Güç Boğması (Force Choke)',
+    level: 2,
+    alignment: 'Dark',
+    forceCost: 3,
+    castingTime: '1 Action',
+    range: '60 ft.',
+    duration: 'Konsantrasyon (1 dakika)',
+    description: 'Hedefin boğazını Güç ile sıkar; her tur 2d8 Kinetik hasar ve Felç/Nefessiz kalma (CON Save).',
+  },
+  {
+    id: 'fp-drain-life',
+    name: 'Yaşam Sömürüsü (Drain Vitality)',
+    level: 2,
+    alignment: 'Dark',
+    forceCost: 3,
+    castingTime: '1 Action',
+    range: '30 ft.',
+    duration: 'Anlık',
+    description: 'Hedefe 3d6 Nekrotik hasar verir ve verilen hasarın yarısı kadar kendi HP değerini yeniler.',
+  },
+  {
+    id: 'fp-force-barrier',
+    name: 'Işık Güç Kalkanı (Force Barrier)',
+    level: 2,
+    alignment: 'Light',
+    forceCost: 3,
+    castingTime: '1 Action',
+    range: 'Self',
+    duration: '1 saat',
+    description: 'Operatifin etrafında 15 geçici can puanı (Temp HP) oluşturan koruyucu aura örer.',
+  },
+
+  // --- SEVİYE 3 ---
+  {
+    id: 'fp-force-lightning-storm',
+    name: 'Güç Yıldırımı Fırtınası (Force Lightning)',
+    level: 3,
+    alignment: 'Dark',
+    forceCost: 5,
+    castingTime: '1 Action',
+    range: '60 ft. (3 hedef)',
+    duration: 'Anlık',
+    description: 'Çatallanan mavi-mor Sith yıldırımlarıyla 3 hedefe 6d8 Yıldırım hasarı boşaltır (DEX Save).',
+  },
+  {
+    id: 'fp-stasis-field',
+    name: 'Zaman & Hareket Durgunluğu (Stasis Field)',
+    level: 3,
+    alignment: 'Universal',
+    forceCost: 5,
+    castingTime: '1 Action',
+    range: '60 ft.',
+    duration: '1 dakika (Konsantrasyon)',
+    description: '20 ft alandaki tüm düşmanları Güç ağında dondurarak tamamen hareketsiz (Paralyzed) kılar.',
+  },
+];
+
+// ==========================================
+// --- SW5E CONDITIONS (DURUMLAR) ---
+// ==========================================
+export interface ConditionInfo {
+  id: string;
+  nameTr: string;
+  nameEn: string;
+  color: string;
+  description: string;
+}
+
+export const SW5E_CONDITIONS: ConditionInfo[] = [
+  { id: 'blinded', nameTr: 'Kör (Blinded)', nameEn: 'Blinded', color: '#ff2a4b', description: 'Görüş gerektiren tüm kontroller başarısız olur. Saldırıları dezavantajlıdır, ona yapılan saldırılar avantajlıdır.' },
+  { id: 'charmed', nameTr: 'Büyülenmiş (Charmed)', nameEn: 'Charmed', color: '#e040fb', description: 'Seni büyüleyen kişiye saldıramazsın. O kişinin sosyal kontrolleri sana karşı avantajlıdır.' },
+  { id: 'deafened', nameTr: 'Sağır (Deafened)', nameEn: 'Deafened', color: '#78909c', description: 'İşitme duyusu yok olur. İşitme gerektiren Algı zarları otomatik başarısızdır.' },
+  { id: 'frightened', nameTr: 'Korkmuş (Frightened)', nameEn: 'Frightened', color: '#ff9800', description: 'Korktuğu kaynağı görebildiği sürece tüm atak ve kontrol zarları dezavantajlıdır. Kaynağa doğru yaklaşamaz.' },
+  { id: 'paralyzed', nameTr: 'Felçli (Paralyzed)', nameEn: 'Paralyzed', color: '#d50000', description: 'Hareket edemez ve konuşamaz. Otomatik başarısız STR/DEX save. 5 ft içindeki vuruşlar otomatik KRİTİK sayılır.' },
+  { id: 'poisoned', nameTr: 'Zehirlenmiş (Poisoned)', nameEn: 'Poisoned', color: '#00e676', description: 'Saldırı zarları ve yetenek kontrolleri dezavantajlıdır.' },
+  { id: 'prone', nameTr: 'Yere Devrilmiş (Prone)', nameEn: 'Prone', color: '#ffb800', description: 'Yalnızca sürünerek hareket edebilir (hızın 2 katı harcanır). Yakın saldırılar ona avantajlı, menzilli saldırılar dezavantajlıdır.' },
+  { id: 'restrained', nameTr: 'Kısıtlanmış (Restrained)', nameEn: 'Restrained', color: '#ff5722', description: 'Hızı 0 olur. Saldırıları dezavantajlı, ona yapılan saldırılar avantajlıdır. DEX saveleri dezavantajlıdır.' },
+  { id: 'stunned', nameTr: 'Sersemlemiş (Stunned)', nameEn: 'Stunned', color: '#ffd600', description: 'Eylem ve reaksiyon alamaz. STR ve DEX saveleri otomatik başarısızdır. Saldırılar ona karşı avantajlıdır.' },
+  { id: 'unconscious', nameTr: 'Bilinçsiz (Unconscious)', nameEn: 'Unconscious', color: '#212121', description: 'Yere devrilir ve elindekileri düşürür. Otomatik başarısız kurtarma atışları. 5 ft içindeki vuruşlar otomatik kritiktir.' },
+  { id: 'invisible', nameTr: 'Görünmez (Invisible)', nameEn: 'Invisible', color: '#00f0ff', description: 'Gözle tespit edilemez. Saldırıları avantajlıdır, ona yapılan saldırılar dezavantajlıdır.' },
+  { id: 'overheated', nameTr: 'Aşırı Isınmış (Overheated)', nameEn: 'Overheated', color: '#ff3d00', description: 'Blaster veya droid aşırı ısınmıştır; 1 tur ateş edemez veya termal hasar alır.' },
+];
+
+// ==========================================
+// --- SW5E SPECIES (TÜRLER) ---
+// ==========================================
+export interface SpeciesInfo {
+  name: string;
+  nameTr: string;
+  abilityBonus: string;
+  speed: number;
+  traits: string[];
+}
+
+export const SW5E_SPECIES: SpeciesInfo[] = [
+  {
+    name: 'Human',
+    nameTr: 'İnsan',
+    abilityBonus: 'Herhangi bir iki stata +1',
+    speed: 30,
+    traits: ['Ekstra bir beceri yetkinliği', 'Ekstra bir SW5e Feat (Yetenek)', 'Yüksek uyum kabiliyeti'],
+  },
+  {
+    name: 'Chiss',
+    nameTr: 'Chiss (Mavi Tenli)',
+    abilityBonus: 'INT +2, DEX +1',
+    speed: 30,
+    traits: ['Karanlıkta Görüş (Darkvision 60 ft)', 'Taktiksel Zeka', 'Soğuğa Direnç', 'Teknoloji Yetkinliği'],
+  },
+  {
+    name: 'Twi\'lek',
+    nameTr: 'Twi\'lek',
+    abilityBonus: 'CHA +2, DEX +1',
+    speed: 30,
+    traits: ['Karanlıkta Görüş (60 ft)', 'Lekku İletişimi', 'Doğal Cazibe (İkna zarlarına bonus)', 'Zarif Hareket'],
+  },
+  {
+    name: 'Zabrak',
+    nameTr: 'Zabrak (Iridonyalı)',
+    abilityBonus: 'CON +2, STR +1',
+    speed: 30,
+    traits: ['Yüksek Acı Eşiği (0 HP de 1 HP ile ayakta kalma)', 'Karanlıkta Görüş', 'İkinci Kalp Dayanıklılığı'],
+  },
+  {
+    name: 'Wookiee',
+    nameTr: 'Wookiee (Kashyyyk)',
+    abilityBonus: 'STR +2, CON +1',
+    speed: 30,
+    traits: ['Wookiee Öfkesi (Rage)', 'Tırmanma Pençeleri', 'Devasa Yapı (Çift taşıma kapasitesi)', 'Korkutucu Kükreme'],
+  },
+  {
+    name: 'Trandoshan',
+    nameTr: 'Trandoshan (Sürüngen Avcı)',
+    abilityBonus: 'STR +2, WIS +1',
+    speed: 30,
+    traits: ['Doğal Zırh (AC 13 + Dex)', 'Hücre Rejenerasyonu (Kısa molada ek HP)', 'Kızılötesi Termal Görüş'],
+  },
+  {
+    name: 'Droid',
+    nameTr: 'Savaş / Protokol Droidi',
+    abilityBonus: 'İki farklı stata +1',
+    speed: 30,
+    traits: ['Zehir ve Hastalıklara %100 Bağışıklık', 'Uyku/Yemek gerekmez (Sadece şarj)', 'Entegre Zırh Plakası'],
+  },
+  {
+    name: 'Kel Dor',
+    nameTr: 'Kel Dor (Doran)',
+    abilityBonus: 'WIS +2, DEX +1',
+    speed: 30,
+    traits: ['Antitoksin Solunum Maskesi', 'Karanlıkta Görüş', 'Telepati (30 ft zihinsel iletişim)', 'Sezgi Çift Yetkinliği'],
+  },
+];
+
+// ==========================================
+// --- SW5E FIGHTING STYLES (DÖVÜŞ TARZLARI) ---
+// ==========================================
+export interface FightingStyleInfo {
+  name: string;
+  nameTr: string;
+  description: string;
+}
+
+export const SW5E_FIGHTING_STYLES: FightingStyleInfo[] = [
+  { name: 'Blaster Style', nameTr: 'Blaster Tarzı', description: 'Menzilli blaster saldırılarına +2 İsabet. Yakın dövüş mesafesinde (5 ft) ateş ederken dezavantaj almazsın.' },
+  { name: 'Heavy Weapon Style', nameTr: 'Ağır Silah Tarzı', description: 'Ağır veya iki elli silahlarla hasar zarı atarken 1 veya 2 gelirse zarı tekrar atabilirsin.' },
+  { name: 'Dual Wield Style', nameTr: 'Çift Silah Tarzı', description: 'İkinci elindeki silahla bonus eylemle vurduğunda yetenek modifikasyonunu hasara ekleyebilirsin.' },
+  { name: 'Defense Style', nameTr: 'Savunma Tarzı', description: 'Zırh giydiğin sürece kalıcı olarak Zırh Sınıfına (AC) +1 bonus kazanırsın.' },
+  { name: 'Snapshot Style', nameTr: 'Hızlı Tetik Tarzı', description: 'Yakın dövüş silahından blastere geçiş eylemsizdir. Fırsat saldırısı olarak hafif blasterınla ateş edebilirsin.' },
+  { name: 'Shield Style', nameTr: 'Kalkan Muhafızı Tarzı', description: 'Yanındaki bir müttefike saldırıldığında reaksiyonla kalkanını araya sokup saldırıya Dezavantaj verirsin.' },
+  { name: 'Brawler Style', nameTr: 'Sokak Dövüşçüsü Tarzı', description: 'Yumruk ve tekmelerin 1d6+STR vurur. Bonus eylemle düşmanı kavrayabilir (Grapple) veya devirebilirsin.' },
+];
+
