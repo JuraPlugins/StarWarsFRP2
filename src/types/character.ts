@@ -42,7 +42,7 @@ export interface SpecialFeature {
 export interface Item {
   id: string;
   name: string;
-  category: 'Blaster' | 'Vibro' | 'Zırh' | 'Patlayıcı' | 'Medikal' | 'Tech' | 'Alet' | 'Sibernetik';
+  category: 'Blaster' | 'Vibro' | 'Zırh' | 'Kalkan' | 'Patlayıcı' | 'Medikal' | 'Tech' | 'Alet' | 'Sibernetik';
   cost: number; // credits
   weight: number; // lbs
   rarity: 'Standart' | 'Premium' | 'Prototip' | 'Askeri' | 'Özel';
